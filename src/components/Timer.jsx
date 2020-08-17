@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Timer extends Component {
     state = {
-        minutes: 300,
+        minutes: 45,
         seconds: 0,
         timeIsPaused: false
     }
