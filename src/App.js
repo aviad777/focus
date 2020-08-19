@@ -6,11 +6,11 @@ import { Switch, Route, Router } from "react-router-dom";
 import './App.css';
 
 
+
+
+
 function App() {
-
-
   return (
-
     <React.Fragment>
       <Router history={history}>
         <Navbar />
@@ -19,9 +19,7 @@ function App() {
         </Switch>
       </Router>
     </React.Fragment>
-
   )
-
 }
 
 export default App;

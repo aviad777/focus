@@ -4,9 +4,9 @@ import Modal from './Modal'
 export default class Timer extends Component {
     state = {
         minutes: 0,
-        seconds: 5,
+        seconds: 0,
         timeIsPaused: false,
-        status: 'work',
+        status: 'off',
         isModalOpen: false
     }
 
@@ -41,7 +41,13 @@ export default class Timer extends Component {
                         }
                         else if (status === 'break') {
                             // Modal - confirm: start next session?
+                            this.toggleModal();
                         }
+                        else if (status === 'off') {
+                            // Modal - confirm: start next session?
+                            console.log('hello');
+                        }
+
                     } else {
                         this.setState(({ minutes }) => ({
                             minutes: minutes - 1,
@@ -62,7 +68,7 @@ export default class Timer extends Component {
     }
 
     onStartNewSession = () => {
-        this.setState(prevState => ({ ...prevState, status: 'work', minutes: 45, seconds: 0 }))
+        this.setState(prevState => ({ ...prevState, status: 'work', minutes: 0, seconds: 10 }))
         this.runTimer()
         console.log(this.state);
     }
@@ -72,7 +78,7 @@ export default class Timer extends Component {
     }
 
     onStartBreak = () => {
-        this.setState(prevState => ({ ...prevState, status: 'break', minutes: 10, seconds: 0 }))
+        this.setState(prevState => ({ ...prevState, status: 'break', minutes: 0, seconds: 10 }))
         this.runTimer()
     }
 
@@ -80,13 +86,20 @@ export default class Timer extends Component {
         const { minutes, seconds, timeIsPaused, isModalOpen, status } = this.state
         return (
             <div>
+                {status === 'work'
+                    ? <h3>on work session</h3>
+                    : status === 'break' ? <h3>on a break</h3>
+                        : status === 'off' ? <button onClick={() => this.onStartNewSession()}>Start</button> : <div></div>
+                }
+
                 {minutes === 0 && seconds === 0
-                    ? <button onClick={() => this.togglePause()}>Start</button>
+                    ? (status === 'work' || status === 'break') ? <h3>done</h3> : <div></div>
                     : <div>
                         <h1>Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</h1>
                         <button onClick={() => this.togglePause()}>Pause</button>
                     </div>
                 }
+
                 {isModalOpen && <Modal status={status}
                     toggleModal={this.toggleModal}
                     onStartNewSession={this.onStartNewSession}
