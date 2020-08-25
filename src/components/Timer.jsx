@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import Modal from './Modal'
+import { connect } from 'react-redux';
+import moment from 'moment'
 
-export default class Timer extends Component {
+import Modal from './Modal'
+import { loadUsers, saveUser } from '../actions/UserActions.js';
+
+
+class Timer extends Component {
     state = {
         minutes: 0,
         seconds: 0,
         timeIsPaused: false,
         status: 'off',
-        isModalOpen: false
+        isModalOpen: false,
+        projectName: 'Programming',
+        sessionDurationMins: 45,
+        sessionStartTime: Date.now()
     }
 
     componentDidMount() {
@@ -38,6 +46,8 @@ export default class Timer extends Component {
                         if (status === 'work') {
                             // Modal - confirm: break or next session?
                             this.toggleModal();
+                            this.saveSession();
+                            console.log('end work status in runTimer');
                         }
                         else if (status === 'break') {
                             // Modal - confirm: start next session?
@@ -45,9 +55,7 @@ export default class Timer extends Component {
                         }
                         else if (status === 'off') {
                             // Modal - confirm: start next session?
-                            console.log('hello');
                         }
-
                     } else {
                         this.setState(({ minutes }) => ({
                             minutes: minutes - 1,
@@ -68,13 +76,39 @@ export default class Timer extends Component {
     }
 
     onStartNewSession = () => {
-        this.setState(prevState => ({ ...prevState, status: 'work', minutes: 0, seconds: 10 }))
+        this.sessionStart = Date.now();
+        this.sessionDuration = { minutes: 0, seconds: 10 }
+
+        this.setState(prevState => ({ ...prevState, status: 'work', minutes: this.sessionDuration.minutes, seconds: this.sessionDuration.seconds }))
         this.runTimer()
-        console.log(this.state);
     }
 
     onFinishSession = () => {
         this.setState(prevState => ({ ...prevState, status: 'off' }))
+        this.saveSession()
+    }
+
+    saveSession = () => {
+        // NOTE count++ , projName , duration, timeStart
+        // const userToSave = this.props.loggedInUser
+        const userToSave = JSON.parse(JSON.stringify(this.props.loggedInUser));
+        console.log();
+        const key = moment(Date.now()).format('L');
+        const sessionToSave = { "timeStart": this.state.sessionStartTime, "duration": this.state.sessionDurationMins, "projectName": this.state.projectName };
+
+        if (key in userToSave.sessions) {
+            console.log('ahhhhhhhh');
+            userToSave.sessions[key].push(sessionToSave)
+        }
+        else {
+            userToSave.sessions[key] = []
+            userToSave.sessions[key].push(sessionToSave)
+            console.log(userToSave);
+        }
+
+        // SET-USER
+        this.props.saveUser(userToSave)
+        console.log('111111111');
     }
 
     onStartBreak = () => {
@@ -109,3 +143,16 @@ export default class Timer extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        users: state.user.users,
+        loggedInUser: state.user.loggedInUser
+    };
+};
+const mapDispatchToProps = {
+    loadUsers,
+    saveUser
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer);

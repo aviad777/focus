@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "Aviad",
+      "password": "",
+      "sessions": {
+        "08/25/2020": [
+          {
+            "timeStart": 1598355042519,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598355200986,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598355414117,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598355479914,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598355890486,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598355989259,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598356060800,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598356060800,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598356060800,
+            "duration": 45,
+            "projectName": "Programming"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "userName": "Michael",
+      "password": "",
+      "sessions": [
+        {
+          "timeStart": "12314123",
+          "duration": "80"
+        },
+        {
+          "timeStart": "12373123",
+          "duration": "100"
+        }
+      ]
+    }
+  ]
+}

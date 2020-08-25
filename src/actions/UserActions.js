@@ -31,12 +31,18 @@ export function removeUser(userId) {
   };
 }
 // THUNK
-export function login(userCreds) {
+export function login(user) {
   return async dispatch => {
-    const user = await UserService.login(userCreds);
+    // const user = await UserService.login(userCreds);
     dispatch(setUser(user));
   };
 }
+// export function loginOlder(userCreds) {
+//   return async dispatch => {
+//     const user = await UserService.login(userCreds);
+//     dispatch(setUser(user));
+//   };
+// }
 export function signup(userCreds) {
   return async dispatch => {
     const user = await UserService.signup(userCreds);
@@ -48,6 +54,13 @@ export function logout() {
     await UserService.logout();
     dispatch(setUser(null));
   };
+}
+
+export function saveUser(userToSave) {
+  return async dispatch => {
+    await UserService.update(userToSave)
+    dispatch(setUser(userToSave));
+  }
 }
 
 export function setUser(user) {

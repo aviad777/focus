@@ -11,18 +11,18 @@ export default {
 }
 
 function getUsers() {
-    return HttpService.get('user')
+    return HttpService.get('users')
 }
 
 function getById(userId) {
-    return HttpService.get(`user/${userId}`)
+    return HttpService.get(`users/${userId}`)
 }
 function remove(userId) {
-    return HttpService.delete(`user/${userId}`)
+    return HttpService.delete(`users/${userId}`)
 }
 
 function update(user) {
-    return HttpService.put(`user/${user._id}`, user)
+    return HttpService.put(`users/${user.id}`, user)
 }
 
 async function login(userCred) {
@@ -38,6 +38,6 @@ async function logout() {
     sessionStorage.clear();
 }
 function _handleLogin(user) {
-    sessionStorage.setItem('user', JSON.stringify(user))
+    sessionStorage.setItem('loggedInUser', JSON.stringify(user))
     return user;
 }
