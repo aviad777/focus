@@ -1,6 +1,7 @@
 import React from 'react';
 import Timer from './components/Timer.jsx'
 import Navbar from './components/Navbar.jsx'
+import Settings from './pages/Settings.jsx'
 import { history } from '../src/history'
 import { Switch, Route, Router } from "react-router-dom";
 import './App.css';
@@ -16,6 +17,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route path="/" component={Timer} exact />
+            <Route path="/settings" component={Settings} exact />
           </Switch>
         </Router>
       </Provider>

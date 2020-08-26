@@ -3,6 +3,7 @@
     {
       "id": 1,
       "userName": "Aviad",
+      "projects": [],
       "password": "",
       "sessions": {
         "08/25/2020": [
@@ -50,6 +51,16 @@
             "timeStart": 1598356060800,
             "duration": 45,
             "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598356493945,
+            "duration": 45,
+            "projectName": "Programming"
+          },
+          {
+            "timeStart": 1598356519878,
+            "duration": 45,
+            "projectName": "Programming"
           }
         ]
       }
@@ -58,6 +69,7 @@
       "id": 2,
       "userName": "Michael",
       "password": "",
+      "projects": [],
       "sessions": [
         {
           "timeStart": "12314123",

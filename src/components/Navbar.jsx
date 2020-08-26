@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadUsers, login } from '../actions/UserActions.js';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     async componentDidMount() {
@@ -17,7 +18,7 @@ class Navbar extends Component {
             <div>
                 <div>FOCUS</div>
                 <ul>
-                    <li>Settings</li>
+                    <li><Link to="/settings">Settings</Link></li>
                     <li>Badges</li>
                     <li>Stats</li>
                     <li>Log in</li>
