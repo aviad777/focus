@@ -12,7 +12,6 @@ export default function ProjectList(props) {
                     <div key={project.id}>
 
                         <ProjectPreview project={project} index={index}/>
-                        <button onClick={() => props.onDelete(project.id)}>remove</button>
                     </div>
                 )
             }

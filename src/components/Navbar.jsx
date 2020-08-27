@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component {
     async componentDidMount() {
         await this.props.loadUsers();
-        console.log(this.props.users);
         const loggedInUser = this.props.users[0]
-        console.log('loggedInUser', loggedInUser);
         sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser))
         this.props.login(loggedInUser)
     }

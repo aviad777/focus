@@ -117,7 +117,7 @@ class Timer extends Component {
     }
 
     render() {
-        const { minutes, seconds, timeIsPaused, isModalOpen, status } = this.state
+        const { minutes, seconds, isModalOpen, status } = this.state
         return (
             <div>
                 {status === 'work'

@@ -9,12 +9,12 @@ class ProjectPreview extends Component {
         isInEditMode: false,
         projectName: ''
     }
-
+    
     componentDidMount() {
         const { props } = this
         this.setState(prevState => ({ ...prevState, projectName: props.project.name }))
     }
-
+   
     handleProjectClicked() {
         this.setState({ isInEditMode: true })
     }
@@ -26,7 +26,14 @@ class ProjectPreview extends Component {
         this.setState({ isInEditMode: false })
     }
     handleProjectChange(ev) {
-        this.setState({ projectName: ev.target.value })
+        this.setState({ projectName : ev.target.value })
+    }
+    onRemoveProject(projectId) {
+        let projects = this.props.loggedInUser.projects;
+        projects = projects.filter(project => project.id !== projectId)
+        const userToSave = { ...this.props.loggedInUser, projects }
+        this.props.saveUser(userToSave)
+        this.setState({ isInEditMode: false })
     }
 
     render() {
@@ -35,11 +42,12 @@ class ProjectPreview extends Component {
                 {this.state.isInEditMode ? <input type="text"
                     defaultValue={this.state.projectName}
                     autoFocus
-                    onChange={(ev) => this.handleProjectChange(ev)}
-                    onBlur={() => this.handleProjectBlured()}
+                onChange={(ev)=>this.handleProjectChange(ev)}
+                onBlur={() => this.handleProjectBlured()}
 
                 />
-                    : <p onClick={() => this.handleProjectClicked()}>{this.props.project.name}</p>
+                : <div><p onClick={() => this.handleProjectClicked()}>{this.props.project.name}</p>
+                <button onClick={() => this.onRemoveProject(this.props.project.id)}>remove</button></div>
                 }
             </div >
         )
@@ -53,7 +61,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    saveUser
+    saveUser,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectPreview)
