@@ -14,9 +14,9 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-                <div>FOCUS</div>
+                <a href="/">FOCUS</a>
                 <ul>
-                    <li><Link to="/settings">Settings</Link></li>
+                    <li><a href="/settings">Settings</a></li>
                     <li>Badges</li>
                     <li>Stats</li>
                     <li>Log in</li>

@@ -8,7 +8,6 @@ import './App.css';
 import { Provider } from 'react-redux';
 import Store from './store';
 
-
 function App() {
   return (
     <React.Fragment>

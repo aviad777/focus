@@ -3,20 +3,7 @@
     {
       "id": 1,
       "userName": "Aviad",
-      "projects": [
-        {
-          "name": "55",
-          "id": "bGSD9J"
-        },
-        {
-          "name": "eat dinner",
-          "id": "vHScTP"
-        },
-        {
-          "name": "kill bil",
-          "id": "f9vNiR"
-        }
-      ],
+      "projects": [],
       "password": "",
       "sessions": {
         "08/25/2020": [

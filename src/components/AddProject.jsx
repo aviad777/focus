@@ -27,9 +27,8 @@ class AddProject extends React.Component {
         let project = {}
         project.name = this.state.project;
         project.id = makeId();
+        project.timeCreated = Date.now();
         userToSave.projects.unshift(project);
-        console.log('project on submit:', project);
-        console.log('handle submit add project:', this.state);
         this.props.saveUser(userToSave);
         this.setState({ project: '' });
     }
@@ -43,7 +42,7 @@ class AddProject extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="project">new project:
-                            <input type="text" name="project" placeholder="type in project." value={project} onChange={this.handleChange} />
+                            <input autoFocus type="text" name="project" placeholder="type in project name" value={project} onChange={this.handleChange} />
                         </label>
                     </div>
 
