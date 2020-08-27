@@ -37,7 +37,6 @@ class AddProject extends React.Component {
 
 
     render() {
-        console.log('project edit');
         const { project } = this.state
         return (
             <div>

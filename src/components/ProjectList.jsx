@@ -7,11 +7,11 @@ export default function ProjectList(props) {
 
     return (
         <div>
-            {props.projects.map(project => {
+            {props.projects.map((project, index) => {
                 return (
                     <div key={project.id}>
 
-                        <ProjectPreview project={project} />
+                        <ProjectPreview project={project} index={index}/>
                         <button onClick={() => props.onDelete(project.id)}>remove</button>
                     </div>
                 )
