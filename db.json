@@ -3,64 +3,39 @@
     {
       "id": 1,
       "userName": "Aviad",
-      "projects": [],
+      "projects": [
+        {
+          "name": "old!!!?",
+          "id": "sgozBu",
+          "timeCreated": 1598543592732
+        },
+        {
+          "name": "newwwwwwwww",
+          "id": "ak8wZu",
+          "timeCreated": 1598542309161
+        }
+      ],
       "password": "",
       "sessions": {
-        "08/25/2020": [
+        "08/25/2020": [],
+        "08/27/2020": [
           {
-            "timeStart": 1598355042519,
+            "timeStart": 1598543611019,
             "duration": 45,
-            "projectName": "Programming"
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
           },
           {
-            "timeStart": 1598355200986,
+            "timeStart": 1598547405138,
             "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598355414117,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598355479914,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598355890486,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598355989259,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598356060800,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598356060800,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598356060800,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598356493945,
-            "duration": 45,
-            "projectName": "Programming"
-          },
-          {
-            "timeStart": 1598356519878,
-            "duration": 45,
-            "projectName": "Programming"
+            "project": {
+              "name": "newwwwwwwww",
+              "id": "ak8wZu",
+              "timeCreated": 1598542309161
+            }
           }
         ]
       }

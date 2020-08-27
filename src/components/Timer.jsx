@@ -13,12 +13,15 @@ class Timer extends Component {
         timeIsPaused: false,
         status: 'off',
         isModalOpen: false,
-        projectName: 'Programming',
+        // projectName: null,
+        // projectId: null,
         sessionDurationMins: 45,
-        sessionStartTime: Date.now()
+        sessionStartTime: Date.now(),
+        currProject: null
     }
 
     componentDidMount() {
+        this.setState({ currProject: this.props.currProject })
         this.runTimer();
     }
 
@@ -92,23 +95,23 @@ class Timer extends Component {
         // NOTE count++ , projName , duration, timeStart
         // const userToSave = this.props.loggedInUser
         const userToSave = JSON.parse(JSON.stringify(this.props.loggedInUser));
-        console.log();
         const key = moment(Date.now()).format('L');
-        const sessionToSave = { "timeStart": this.state.sessionStartTime, "duration": this.state.sessionDurationMins, "projectName": this.state.projectName };
+        const sessionToSave = {
+            "timeStart": this.state.sessionStartTime,
+            "duration": this.state.sessionDurationMins,
+            "project": this.state.currProject
+        };
 
         if (key in userToSave.sessions) {
-            console.log('ahhhhhhhh');
             userToSave.sessions[key].push(sessionToSave)
         }
         else {
             userToSave.sessions[key] = []
             userToSave.sessions[key].push(sessionToSave)
-            console.log(userToSave);
         }
 
         // SET-USER
         this.props.saveUser(userToSave);
-        console.log('111111111');
     }
 
     onStartBreak = () => {

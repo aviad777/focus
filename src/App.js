@@ -1,5 +1,5 @@
 import React from 'react';
-import Timer from './components/Timer.jsx'
+import Home from './pages/Home.jsx'
 import Navbar from './components/Navbar.jsx'
 import Settings from './pages/Settings.jsx'
 import { history } from '../src/history'
@@ -15,7 +15,7 @@ function App() {
         <Router history={history}>
           <Navbar />
           <Switch>
-            <Route path="/" component={Timer} exact />
+            <Route path="/" component={Home} exact />
             <Route path="/settings" component={Settings} exact />
           </Switch>
         </Router>

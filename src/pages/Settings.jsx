@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadUsers, login } from '../actions/UserActions.js';
+
 import ProjectList from '../components/ProjectList';
 import AddProject from '../components/AddProject';
 
@@ -13,6 +14,7 @@ class Settings extends Component {
         return (
             <div>
                 <h2>Settings</h2>
+
                 <AddProject />
                 {this.props.loggedInUser && this.props.loggedInUser.projects &&
                     <ProjectList projects={this.props.loggedInUser.projects} />}
