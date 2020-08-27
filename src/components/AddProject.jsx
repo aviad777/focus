@@ -1,15 +1,14 @@
 import React from 'react'
 // import projectService from './../services/projectService.js'
-import { setProjects, addProject } from '../actions/ProjectActions.js'
 
-
-
+import { saveUser } from '../actions/UserActions.js';
+import { makeId } from '../services/utils.js'
 import { connect } from 'react-redux';
 
 
 class AddProject extends React.Component {
     state = {
-        task: ''
+        project: ''
     }
 
     // componentDidMount() {
@@ -23,28 +22,29 @@ class AddProject extends React.Component {
     }
 
     handleSubmit = (ev) => {
+        const userToSave = JSON.parse(JSON.stringify(this.props.loggedInUser));
         ev.preventDefault();
-        let project = { task: this.state.task, done: false };
+        let project = {}
+        project.name = this.state.project;
+        project.id = makeId();
+        userToSave.projects.unshift(project);
         console.log('project on submit:', project);
-
-        this.props.addProject(project);
         console.log('handle submit add project:', this.state);
-
-        this.setState({ task: '' })
-
+        this.props.saveUser(userToSave);
+        this.setState({ project: '' });
     }
 
 
 
     render() {
         console.log('project edit');
-        const { task } = this.state
+        const { project } = this.state
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <label htmlFor="task">task:
-                            <input type="text" name="task" placeholder="type in project." value={task} onChange={this.handleChange} />
+                        <label htmlFor="project">new project:
+                            <input type="text" name="project" placeholder="type in project." value={project} onChange={this.handleChange} />
                         </label>
                     </div>
 
@@ -59,13 +59,12 @@ class AddProject extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        projects: state.projects
+        loggedInUser: state.user.loggedInUser
     }
 }
 
-
 const mapDispatchToProps = {
-    addProject
+    saveUser
 }
 
 

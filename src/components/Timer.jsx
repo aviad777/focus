@@ -107,7 +107,7 @@ class Timer extends Component {
         }
 
         // SET-USER
-        this.props.saveUser(userToSave)
+        this.props.saveUser(userToSave);
         console.log('111111111');
     }
 

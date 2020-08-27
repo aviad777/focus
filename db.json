@@ -3,7 +3,24 @@
     {
       "id": 1,
       "userName": "Aviad",
-      "projects": [],
+      "projects": [
+        {
+          "name": "focus",
+          "id": "TK9ERJ"
+        },
+        {
+          "id": "1",
+          "name": "computing"
+        },
+        {
+          "id": "2",
+          "name": "gaming"
+        },
+        {
+          "id": "3",
+          "name": "skydiving"
+        }
+      ],
       "password": "",
       "sessions": {
         "08/25/2020": [

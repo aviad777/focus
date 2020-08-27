@@ -13,7 +13,6 @@ export default function ProjectList(props) {
 
                         <ProjectPreview project={project} />
                         <button onClick={() => props.onDelete(project.id)}>remove</button>
-                        <button onClick={() => props.onRename(project.id)}>rename</button>
                     </div>
                 )
             }

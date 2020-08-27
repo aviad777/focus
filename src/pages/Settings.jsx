@@ -14,7 +14,8 @@ class Settings extends Component {
             <div>
                 <h2>Settings</h2>
                 <AddProject />
-                {this.props.loggedInUser && this.props.loggedInUser.projects && <ProjectList onDelete={this.props.removeProject} projects={this.props.loggedInUser.projects} />}
+                {this.props.loggedInUser && this.props.loggedInUser.projects &&
+                    <ProjectList onDelete={this.props.removeProject} projects={this.props.loggedInUser.projects} />}
             </div>
         )
     }
