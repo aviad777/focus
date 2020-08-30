@@ -18,14 +18,15 @@ class ProjectPreview extends Component {
     handleProjectClicked() {
         this.setState({ isInEditMode: true })
     }
-    handleProjectBlured() {
-        const projects = this.props.loggedInUser.projects;
-        projects[this.props.index].name = this.state.projectName;
-        const userToSave = { ...this.props.loggedInUser, projects }
+    handleProjectBlured(projectId) {
+        const projects = JSON.parse(JSON.stringify(this.props.loggedInUser.projects));
+        const projectIndex = projects.findIndex(proj => proj.id === projectId)
+        projects[projectIndex].name = this.state.projectName;
+        const userToSave = { ...this.props.loggedInUser, projects}
         this.props.saveUser(userToSave)
         this.setState({ isInEditMode: false })
     }
-    handleProjectChange(ev) {
+    handleNameChange(ev) {
         this.setState({ projectName : ev.target.value })
     }
     onRemoveProject(projectId) {
@@ -42,11 +43,11 @@ class ProjectPreview extends Component {
                 {this.state.isInEditMode ? <input type="text"
                     defaultValue={this.state.projectName}
                     autoFocus
-                onChange={(ev)=>this.handleProjectChange(ev)}
-                onBlur={() => this.handleProjectBlured()}
+                onChange={(ev)=>this.handleNameChange(ev)}
+                onBlur={() => this.handleProjectBlured(this.props.project.id)}
 
                 />
-                : <div><p onClick={() => this.handleProjectClicked()}>{this.props.project.name}</p>
+                : <div><p onClick={() => this.handleProjectClicked()}>{this.state.projectName}</p>
                 <button onClick={() => this.onRemoveProject(this.props.project.id)}>remove</button></div>
                 }
             </div >

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { loadUsers, login } from '../actions/UserActions.js';
+import { loadUsers, login, saveUser } from '../actions/UserActions.js';
 
 import Timer from '../components/Timer';
 
@@ -12,26 +12,27 @@ class Home extends Component {
     async componentDidMount() {
     }
     onChangeProject = (e) => {
-        this.setState({ currProjectId: e.target.options[e.target.selectedIndex].value })
+        const currProjectId = e.target.options[e.target.selectedIndex].value;
+        this.setState({ currProjectId })
+        const userToSave = { ...this.props.loggedInUser, currProjectId}
+        this.props.saveUser(userToSave)
     }
-    getCurrProject = () => {
-        return this.props.loggedInUser.projects.find(project => project.id === this.state.currProjectId)
+    getCurrProjectId = () => {
+        return this.props.loggedInUser.currProjectId;
     }
 
     render() {
         return ( this.props.loggedInUser &&
-       
             <div>
                 <h2>Home</h2>
                 <select onChange={(e) => this.onChangeProject(e)}>
                     <option></option>
                     {
-                        // this.props.loggedInUser &&
                         this.props.loggedInUser.projects.map(project =>
                             <option key={project.id} value={project.id}>{project.name}</option>)
                     }
                 </select>
-            {this.state.currProjectId  && <Timer currProject={this.getCurrProject()} />}
+            {this.state.currProjectId  && <Timer />}
             </div>
         )
     }
@@ -45,7 +46,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     loadUsers,
-    login
+    login,
+    saveUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -17,12 +17,12 @@ class Timer extends Component {
         // projectId: null,
         sessionDurationMins: 45,
         sessionStartTime: Date.now(),
-        currProject: null
+        currProjectId: null
     }
 
     componentDidMount() {
-        this.setState({ currProject: this.props.currProject })
-        this.runTimer();
+        this.setState({ currProjectId: this.props.loggedInUser.currProjectId })
+        // this.runTimer();
     }
 
     componentWillUnmount() {
@@ -50,7 +50,6 @@ class Timer extends Component {
                             // Modal - confirm: break or next session?
                             this.toggleModal();
                             this.saveSession();
-                            console.log('end work status in runTimer');
                         }
                         else if (status === 'break') {
                             // Modal - confirm: start next session?
@@ -99,7 +98,7 @@ class Timer extends Component {
         const sessionToSave = {
             "timeStart": this.state.sessionStartTime,
             "duration": this.state.sessionDurationMins,
-            "project": this.state.currProject
+            "projectId": this.props.loggedInUser.currProjectId
         };
 
         if (key in userToSave.sessions) {

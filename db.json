@@ -3,16 +3,22 @@
     {
       "id": 1,
       "userName": "Aviad",
+      "currProjectId": "tXHJNk",
       "projects": [
         {
-          "name": "old!!!?",
-          "id": "sgozBu",
-          "timeCreated": 1598543592732
+          "name": "Eat dinner",
+          "id": "jDbGDS",
+          "timeCreated": 1598777683363
         },
         {
-          "name": "newwwwwwwww",
-          "id": "ak8wZu",
-          "timeCreated": 1598542309161
+          "name": "Kill Bill",
+          "id": "lbfOTI",
+          "timeCreated": 1598777679642
+        },
+        {
+          "name": "Go to the moon",
+          "id": "tXHJNk",
+          "timeCreated": 1598777675010
         }
       ],
       "password": "",
@@ -36,6 +42,111 @@
               "id": "ak8wZu",
               "timeCreated": 1598542309161
             }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          },
+          {
+            "timeStart": 1598547514168,
+            "duration": 45,
+            "project": {
+              "name": "old!!!?",
+              "id": "sgozBu",
+              "timeCreated": 1598543592732
+            }
+          }
+        ],
+        "08/30/2020": [
+          {
+            "timeStart": 1598782521817,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598782521817,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598782521817,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598782521817,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598782521817,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598782994336,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598782994336,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1598783044900,
+            "duration": 45,
+            "projectId": "tXHJNk"
           }
         ]
       }
