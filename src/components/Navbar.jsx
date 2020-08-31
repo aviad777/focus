@@ -18,7 +18,7 @@ class Navbar extends Component {
                 <ul>
                     <li><a href="/settings">Settings</a></li>
                     <li>Badges</li>
-                    <li>Stats</li>
+                    <li><a href="/stats">Stats</a></li>
                     <li>Log in</li>
                 </ul>
             </div>
