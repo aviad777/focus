@@ -26,78 +26,6 @@
         "08/25/2020": [],
         "08/27/2020": [
           {
-            "timeStart": 1598543611019,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
-            "timeStart": 1598547405138,
-            "duration": 45,
-            "project": {
-              "name": "newwwwwwwww",
-              "id": "ak8wZu",
-              "timeCreated": 1598542309161
-            }
-          },
-          {
-            "timeStart": 1598547514168,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
-            "timeStart": 1598547514168,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
-            "timeStart": 1598547514168,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
-            "timeStart": 1598547514168,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
-            "timeStart": 1598547514168,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
-            "timeStart": 1598547514168,
-            "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
-          },
-          {
             "timeStart": 1598547514168,
             "duration": 45,
             "project": {
@@ -145,6 +73,18 @@
           },
           {
             "timeStart": 1598783044900,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          }
+        ],
+        "09/01/2020": [
+          {
+            "timeStart": 1598949741701,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1598949941503,
             "duration": 45,
             "projectId": "tXHJNk"
           }
