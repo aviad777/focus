@@ -23,19 +23,14 @@
       ],
       "password": "",
       "sessions": {
-        "08/25/2020": [],
-        "08/27/2020": [
+        "2020-08-27": [
           {
             "timeStart": 1598547514168,
             "duration": 45,
-            "project": {
-              "name": "old!!!?",
-              "id": "sgozBu",
-              "timeCreated": 1598543592732
-            }
+            "projectId": "lbfOTI"
           }
         ],
-        "08/30/2020": [
+        "2020-08-30": [
           {
             "timeStart": 1598782521817,
             "duration": 45,
@@ -77,7 +72,7 @@
             "projectId": "tXHJNk"
           }
         ],
-        "09/01/2020": [
+        "2020-09-01": [
           {
             "timeStart": 1598949741701,
             "duration": 45,
@@ -85,6 +80,23 @@
           },
           {
             "timeStart": 1598949941503,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          }
+        ],
+        "2020-09-03": [
+          {
+            "timeStart": 1599124948603,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1599132561444,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1599135770021,
             "duration": 45,
             "projectId": "tXHJNk"
           }

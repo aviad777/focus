@@ -94,7 +94,7 @@ class Timer extends Component {
         // NOTE count++ , projName , duration, timeStart
         // const userToSave = this.props.loggedInUser
         const userToSave = JSON.parse(JSON.stringify(this.props.loggedInUser));
-        const key = moment(Date.now()).format('L');
+        const key = moment().format('YYYY-MM-DD');
         const sessionToSave = {
             "timeStart": this.state.sessionStartTime,
             "duration": this.state.sessionDurationMins,
