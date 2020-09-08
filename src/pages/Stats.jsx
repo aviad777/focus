@@ -1,15 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadUsers, login } from '../actions/UserActions.js';
+import Chart from '../components/chart/WorkTimeByDayChart.jsx'
 import moment from 'moment';
+import data from '../data.js';
 
 class Stats extends Component {
     state = {
         fromDate: "",
-        toDate: ""
+        toDate: "",
+        data: []
     }
     async componentDidMount() {
-        this.setState({ fromDate: moment().format('YYYY-MM-DD'), toDate: moment().format('YYYY-MM-DD') })
+        await this.setState({ fromDate: moment().format('YYYY-MM-DD'), toDate: moment().format('YYYY-MM-DD') })
+        setTimeout(() => {
+            this.setState({ data: this.chartDataBuilder(this.state.fromDate, this.state.toDate) });
+        }, 1500);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (JSON.stringify(prevProps.loggedInUser) !== JSON.stringify(this.props.loggedInUser)) {
+
+            this.setState({ data: this.chartDataBuilder(this.state.fromDate, this.state.toDate) });
+        }
     }
 
     // calculateDayWorkTime = (days) => {
@@ -30,7 +43,7 @@ class Stats extends Component {
         return { sessionsCount, daysCount }
     }
     //  gets number of session returns hours and minutes object
-    sessionsToTime = (sessionsCount, duration) => { 
+    sessionsToTime = (sessionsCount, duration) => {
         const totalMins = sessionsCount * duration
         const mins = (totalMins % 60)
         const hours = Math.floor(totalMins / 60)
@@ -51,6 +64,32 @@ class Stats extends Component {
         }
         return { hours, mins }
     }
+
+    chartDataBuilder = (from, to) => {
+        var data = [];
+
+
+
+        var id = "all proj";
+        var color = "hsl(110, 70%, 50%)";
+
+        data.push({ id, color, data: [] })
+        const daysCount = this.calculateSessions(from, to).daysCount;
+
+        for (let i = moment(from); i.isSameOrBefore(moment(to)); i = i.add(1, 'days')) {
+            var x = i.format('YYYY-MM-DD');
+            var y = this.calculateSessions(i, i).sessionsCount;
+            console.log('data on loop is:', x, y);
+            data[0].data.push({ x, y });
+        }
+        console.log('data is:', data);
+        return data;
+    }
+
+
+
+
+
 
     // creates the text for stats
     sessionSummary = () => {
@@ -74,14 +113,14 @@ class Stats extends Component {
 
             <p>Since {moment(this.state.fromDate).format('dddd')}, {moment(this.state.fromDate).format("MMM Do YYYY")} (29 days ago)
             to {moment(this.state.toDate).format('dddd')}, {moment(this.state.toDate).format("MMM Do YYYY")} (2 days ago),
-            you have finished {sessionsCount} work sessions for a total of {hours? hours + ' hours and ' + mins + ' minutes' : mins + ' minutes'}.
-            This means you have been working {avgHours? avgHours + ' hours and ' + avgMins + ' minutes' : avgMins + ' minutes'} per day on average (including today).
+            you have finished {sessionsCount} work sessions for a total of {hours ? hours + ' hours and ' + mins + ' minutes' : mins + ' minutes'}.
+            This means you have been working {avgHours ? avgHours + ' hours and ' + avgMins + ' minutes' : avgMins + ' minutes'} per day on average (including today).
             </p>
 
         </div>
     }
-
     render() {
+        this.props.loggedInUser && (this.chartDataBuilder(this.state.fromDate, this.state.toDate));
         return this.props.loggedInUser && (
             <div>
                 <h2>Stats</h2>
@@ -92,10 +131,17 @@ class Stats extends Component {
                 <label htmlFor="toDate">To: </label>
                 <input type="date" name="toDate" value={this.state.toDate} onChange={(e) => { this.setState({ toDate: e.target.value }) }} />
                 {this.sessionSummary()}
+
+                <Chart data={this.state.data} />
             </div>
         )
     }
 }
+
+
+
+
+
 
 const mapStateToProps = state => {
     return {
