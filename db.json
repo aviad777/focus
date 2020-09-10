@@ -3,7 +3,7 @@
     {
       "id": 1,
       "userName": "Aviad",
-      "currProjectId": "tXHJNk",
+      "currProjectId": "lbfOTI",
       "projects": [
         {
           "name": "Eat dinner",
@@ -99,6 +99,23 @@
             "timeStart": 1599135770021,
             "duration": 45,
             "projectId": "tXHJNk"
+          }
+        ],
+        "2020-09-10": [
+          {
+            "timeStart": 1599730145445,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          },
+          {
+            "timeStart": 1599730145445,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          },
+          {
+            "timeStart": 1599732586274,
+            "duration": 45,
+            "projectId": "lbfOTI"
           }
         ]
       }

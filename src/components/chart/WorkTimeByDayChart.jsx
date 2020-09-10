@@ -1,6 +1,80 @@
 import React, { Component } from 'react'
 import { ResponsiveLine } from '@nivo/line'
 
+class WorkTimeByDayChart extends Component {
+    state = {
+        data: []
+    }
+    async componentDidMount() {
+        // await this.setState({ fromDate: moment().format('YYYY-MM-DD'), toDate: moment().format('YYYY-MM-DD') })
+        // setTimeout(() => {
+            this.setState({ data: this.props.chartDataBuilder(this.props.fromDate, this.props.toDate) });
+        // }, 1500);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(this.props.fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(this.props.toDate)) {
+
+            this.setState({ data: this.props.chartDataBuilder(this.props.fromDate, this.props.toDate) });
+        }
+    }
+    render() {
+        console.log(this.state.data)
+        return (
+            <div className="chart">
+                <ResponsiveLine
+                    data={this.state.data}
+                    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+                    xScale={{
+                        type: 'time',
+                        format: '%Y-%m-%d',
+                        useUTC: false,
+                        precision: 'day',
+                    }}
+                    xFormat="time:%Y-%m-%d"
+                    yScale={{
+                        type: 'linear',
+                        stacked: false,
+                    }}
+                    axisLeft={{
+                        legend: 'linear scale',
+                        legendOffset: 12,
+                    }}
+                    axisBottom={{
+                        format: '%b %d',
+                        tickValues: 'every 2 days',
+                        legend: 'time scale',
+                        legendOffset: -12,
+                    }}
+                    curve='monotoneX'
+                    enablePointLabel={true}
+                    // pointSymbol={CustomSymbol}
+                    pointSize={16}
+                    pointBorderWidth={1}
+                    pointBorderColor={{
+                        from: 'color',
+                        modifiers: [['darker', 0.3]],
+                    }}
+                    useMesh={true}
+                    enableSlices={false}
+                    />
+            </div>
+        )
+    }
+
+
+
+
+    
+
+}
+export default WorkTimeByDayChart;
+
+
+
+
+
+
 // import data from '../../data'
 // const data = [
 //     {
@@ -280,87 +354,5 @@ import { ResponsiveLine } from '@nivo/line'
 // no chart will be rendered.
 // website examples showcase many properties,
 // you'll often use just a few of them.
-
-
-
-class Chart extends Component {
-
-    render() {
-        return (
-            <div className="chart">
-                <ResponsiveLine
-                    data={this.props.data}
-                    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-                    xScale={{ type: 'point' }}
-                    yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                    axisTop={null}
-                    axisRight={null}
-                    axisBottom={{
-                        orient: 'bottom',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: 'time',
-                        legendOffset: 36,
-                        legendPosition: 'middle'
-                    }}
-                    axisLeft={{
-                        orient: 'left',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: 'count',
-                        legendOffset: -40,
-                        legendPosition: 'middle'
-                    }}
-                    colors={{ scheme: 'dark2' }}
-                    pointSize={10}
-                    pointColor={{ theme: 'background' }}
-                    pointBorderWidth={2}
-                    pointBorderColor={{ from: 'serieColor' }}
-                    pointLabel="y"
-                    pointLabelYOffset={-12}
-                    useMesh={true}
-                    legends={[
-                        {
-                            anchor: 'bottom-right',
-                            direction: 'column',
-                            justify: false,
-                            translateX: 100,
-                            translateY: 0,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 80,
-                            itemHeight: 20,
-                            itemOpacity: 0.75,
-                            symbolSize: 12,
-                            symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemBackground: 'rgba(0, 0, 0, .03)',
-                                        itemOpacity: 1
-                                    }
-                                }
-                            ]
-                        }
-                    ]}
-                />
-            </div>
-        )
-    }
-
-
-
-
-
-
-}
-export default Chart;
-
-
-
 
 

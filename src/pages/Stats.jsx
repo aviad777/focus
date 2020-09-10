@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadUsers, login } from '../actions/UserActions.js';
-import Chart from '../components/chart/WorkTimeByDayChart.jsx'
+import WorkTimeByDayChart from '../components/chart/WorkTimeByDayChart.jsx'
+import WorkTimeByProjectsPie from '../components/chart/WorkTimeByProjectsPie.jsx'
 import moment from 'moment';
 import data from '../data.js';
 
@@ -9,21 +10,21 @@ class Stats extends Component {
     state = {
         fromDate: "",
         toDate: "",
-        data: []
+        // data: []
     }
     async componentDidMount() {
         await this.setState({ fromDate: moment().format('YYYY-MM-DD'), toDate: moment().format('YYYY-MM-DD') })
-        setTimeout(() => {
-            this.setState({ data: this.chartDataBuilder(this.state.fromDate, this.state.toDate) });
-        }, 1500);
+        // setTimeout(() => {
+        //     this.setState({ data: this.chartDataBuilder(this.state.fromDate, this.state.toDate) });
+        // }, 1500);
     }
 
-    componentDidUpdate(prevProps) {
-        if (JSON.stringify(prevProps.loggedInUser) !== JSON.stringify(this.props.loggedInUser)) {
+    // componentDidUpdate(prevProps) {
+    //     if (JSON.stringify(prevProps.loggedInUser) !== JSON.stringify(this.props.loggedInUser)) {
 
-            this.setState({ data: this.chartDataBuilder(this.state.fromDate, this.state.toDate) });
-        }
-    }
+    //         this.setState({ data: this.chartDataBuilder(this.state.fromDate, this.state.toDate) });
+    //     }
+    // }
 
     // calculateDayWorkTime = (days) => {
     //     const date = moment(Date.now() - days * 1000 * 60 * 60 * 24).format('YYYY-MM-DD')
@@ -42,6 +43,20 @@ class Stats extends Component {
         }
         return { sessionsCount, daysCount }
     }
+    // gets date range return object : number of sessions and days 
+    calculateSessionsForPie = (from, to, projectId) => {
+        let sessionsCount = 0;
+        let daysCount = 0;
+        const { sessions } = this.props.loggedInUser
+        for (let i = moment(from); i.isSameOrBefore(moment(to)); i = i.add(1, 'days')) {
+            // console.log(i.format('YYYY-MM-DD'));
+            if (sessions[i.format('YYYY-MM-DD')].projectId === projectId) {
+                sessionsCount += sessions[i.format('YYYY-MM-DD')] ? sessions[i.format('YYYY-MM-DD')].length : 0;
+            }
+            daysCount += 1
+        }
+        return { sessionsCount, daysCount }
+    }
     //  gets number of session returns hours and minutes object
     sessionsToTime = (sessionsCount, duration) => {
         const totalMins = sessionsCount * duration
@@ -53,7 +68,7 @@ class Stats extends Component {
 
     // gets number of days and sessions returns AVERAGE hours and minutes object
     averageCalc = (daysCount, sessionsCount, duration) => {
-        console.log(daysCount, sessionsCount);
+        // console.log(daysCount, sessionsCount);
 
         const averageMins = sessionsCount * duration / daysCount
         let mins = averageMins
@@ -67,9 +82,6 @@ class Stats extends Component {
 
     chartDataBuilder = (from, to) => {
         var data = [];
-
-
-
         var id = "all proj";
         var color = "hsl(110, 70%, 50%)";
 
@@ -79,14 +91,28 @@ class Stats extends Component {
         for (let i = moment(from); i.isSameOrBefore(moment(to)); i = i.add(1, 'days')) {
             var x = i.format('YYYY-MM-DD');
             var y = this.calculateSessions(i, i).sessionsCount;
-            console.log('data on loop is:', x, y);
+            // console.log('data on loop is:', x, y);
             data[0].data.push({ x, y });
         }
         console.log('data is:', data);
         return data;
     }
 
+    pieDataBuilder = (from, to) => {
+        const { sessions } = this.props.loggedInUser
+        var result = {}
+        var count = 0 
+        for (let i = moment(from); i.isSameOrBefore(moment(to)); i = i.add(1, 'days')) {
+        }
 
+
+
+
+
+
+
+
+    }
 
 
 
@@ -121,6 +147,8 @@ class Stats extends Component {
     }
     render() {
         this.props.loggedInUser && (this.chartDataBuilder(this.state.fromDate, this.state.toDate));
+        this.props.loggedInUser && (this.pieDataBuilder(this.state.fromDate, this.state.toDate));
+        
         return this.props.loggedInUser && (
             <div>
                 <h2>Stats</h2>
@@ -132,7 +160,8 @@ class Stats extends Component {
                 <input type="date" name="toDate" value={this.state.toDate} onChange={(e) => { this.setState({ toDate: e.target.value }) }} />
                 {this.sessionSummary()}
 
-                <Chart data={this.state.data} />
+                <WorkTimeByDayChart chartDataBuilder={this.chartDataBuilder} fromDate={this.state.fromDate} toDate={this.state.toDate} />
+                <WorkTimeByProjectsPie  />
             </div>
         )
     }
