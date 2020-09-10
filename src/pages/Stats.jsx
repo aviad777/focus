@@ -32,6 +32,11 @@ class Stats extends Component {
     // }
 
     // gets date range return object : number of sessions and days 
+
+    getProjNameById = (id) => {
+        return this.props.loggedInUser.projects.find(proj => id === proj.id).name
+    }
+
     calculateSessions = (from, to) => {
         let sessionsCount = 0;
         let daysCount = 0;
@@ -45,16 +50,23 @@ class Stats extends Component {
     }
     // gets date range return object : number of sessions and days 
     calculateSessionsForPie = (from, to, projectId) => {
-        let sessionsCount = 0;
+        let sessionsCount = {};
         let daysCount = 0;
         const { sessions } = this.props.loggedInUser
         for (let i = moment(from); i.isSameOrBefore(moment(to)); i = i.add(1, 'days')) {
             // console.log(i.format('YYYY-MM-DD'));
-            if (sessions[i.format('YYYY-MM-DD')].projectId === projectId) {
-                sessionsCount += sessions[i.format('YYYY-MM-DD')] ? sessions[i.format('YYYY-MM-DD')].length : 0;
+            if (sessions[i.format('YYYY-MM-DD')]) {
+                sessions[i.format('YYYY-MM-DD')].forEach(session => {
+                    if (sessionsCount[session.projectId])
+                        sessionsCount[session.projectId]++;
+                    else
+                        sessionsCount[session.projectId] = 1;
+                });
+
             }
             daysCount += 1
         }
+        console.log('session count', sessionsCount);
         return { sessionsCount, daysCount }
     }
     //  gets number of session returns hours and minutes object
@@ -99,19 +111,22 @@ class Stats extends Component {
     }
 
     pieDataBuilder = (from, to) => {
-        const { sessions } = this.props.loggedInUser
-        var result = {}
-        var count = 0 
-        for (let i = moment(from); i.isSameOrBefore(moment(to)); i = i.add(1, 'days')) {
+
+        var data = [];
+        var color = "hsl(110, 70%, 50%)";
+        // const daysCount = this.calculateSessionsForPie(from, to).daysCount;
+        const pieData = this.calculateSessionsForPie(from, to);
+        console.log('pie data', pieData);
+        // var sum = 0;
+        for (const i in pieData.sessionsCount) {
+            // sum += pieData[i];
+            const id = this.getProjNameById(i);
+            const label = id;
+            const value = pieData.sessionsCount[i];
+            data.push({ id, label, value, color });
         }
-
-
-
-
-
-
-
-
+        console.log('pie data is', data);
+        return data;
     }
 
 
@@ -148,7 +163,7 @@ class Stats extends Component {
     render() {
         this.props.loggedInUser && (this.chartDataBuilder(this.state.fromDate, this.state.toDate));
         this.props.loggedInUser && (this.pieDataBuilder(this.state.fromDate, this.state.toDate));
-        
+
         return this.props.loggedInUser && (
             <div>
                 <h2>Stats</h2>
@@ -161,7 +176,7 @@ class Stats extends Component {
                 {this.sessionSummary()}
 
                 <WorkTimeByDayChart chartDataBuilder={this.chartDataBuilder} fromDate={this.state.fromDate} toDate={this.state.toDate} />
-                <WorkTimeByProjectsPie  />
+                <WorkTimeByProjectsPie pieDataBuilder={this.pieDataBuilder} fromDate={this.state.fromDate} toDate={this.state.toDate} />
             </div>
         )
     }
