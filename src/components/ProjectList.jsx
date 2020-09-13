@@ -4,13 +4,11 @@ import React from 'react'
 
 
 export default function ProjectList(props) {
-
     return (
         <div>
             {props.projects.map((project, index) => {
                 return (
                     <div key={project.id}>
-
                         <ProjectPreview project={project} index={index}/>
                     </div>
                 )
@@ -18,5 +16,4 @@ export default function ProjectList(props) {
             )}
         </div>
     )
-
 }

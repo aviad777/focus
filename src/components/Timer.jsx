@@ -22,7 +22,6 @@ class Timer extends Component {
 
     componentDidMount() {
         this.setState({ currProjectId: this.props.loggedInUser.currProjectId })
-        // this.runTimer();
     }
 
     componentWillUnmount() {
@@ -92,7 +91,6 @@ class Timer extends Component {
 
     saveSession = () => {
         // NOTE count++ , projName , duration, timeStart
-        // const userToSave = this.props.loggedInUser
         const userToSave = JSON.parse(JSON.stringify(this.props.loggedInUser));
         const key = moment().format('YYYY-MM-DD');
         const sessionToSave = {
@@ -135,7 +133,6 @@ class Timer extends Component {
                         <button onClick={() => this.togglePause()}>Pause</button>
                     </div>
                 }
-
                 {isModalOpen && <Modal status={status}
                     toggleModal={this.toggleModal}
                     onStartNewSession={this.onStartNewSession}

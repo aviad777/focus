@@ -6,6 +6,11 @@
       "currProjectId": "lbfOTI",
       "projects": [
         {
+          "name": "Do Shopping",
+          "id": "Jk8cAV",
+          "timeCreated": 1599749256167
+        },
+        {
           "name": "Eat dinner",
           "id": "jDbGDS",
           "timeCreated": 1598777683363
@@ -114,6 +119,18 @@
           },
           {
             "timeStart": 1599732586274,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1599749263949,
+            "duration": 45,
+            "projectId": "Jk8cAV"
+          }
+        ],
+        "2020-09-11": [
+          {
+            "timeStart": 1599827454242,
             "duration": 45,
             "projectId": "lbfOTI"
           }

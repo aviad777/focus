@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import { ResponsivePie } from '@nivo/pie'
-import { generateProgrammingLanguageStats } from '@nivo/generators'
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
 // no chart will be rendered.
@@ -14,10 +13,7 @@ class WorkTimeByProjectsPie extends Component {
     }
 
     async componentDidMount() {
-        // await this.setState({ fromDate: moment().format('YYYY-MM-DD'), toDate: moment().format('YYYY-MM-DD') })
-        // setTimeout(() => {
         this.setState({ data: this.props.pieDataBuilder(this.props.fromDate, this.props.toDate) });
-        // }, 1500);
     }
 
     componentDidUpdate(prevProps) {
@@ -27,9 +23,7 @@ class WorkTimeByProjectsPie extends Component {
         }
     }
 
-
     render() {
-        console.log('pie data is', this.state.data);
         return (
             <div className="chart" >
                 <ResponsivePie
@@ -54,7 +48,6 @@ class WorkTimeByProjectsPie extends Component {
                     radialLabelsLinkColor={{ from: 'color' }}
                     slicesLabelsSkipAngle={10}
                     slicesLabelsTextColor="#333333"
-                    animate={true}
                     motionStiffness={90}
                     motionDamping={15}
                     defs={[
@@ -77,57 +70,6 @@ class WorkTimeByProjectsPie extends Component {
                             spacing: 10
                         }
                     ]}
-                    fill={[
-                        {
-                            match: {
-                                id: 'ruuuuuuuuuuuuuby'
-                            },
-                            id: 'dots'
-                        },
-                        {
-                            match: {
-                                id: 'c'
-                            },
-                            id: 'dots'
-                        },
-                        {
-                            match: {
-                                id: 'go'
-                            },
-                            id: 'dots'
-                        },
-                        {
-                            match: {
-                                id: 'python'
-                            },
-                            id: 'dots'
-                        },
-                        {
-                            match: {
-                                id: 'scala'
-                            },
-                            id: 'lines'
-                        },
-                        {
-                            match: {
-                                id: 'lisp'
-                            },
-                            id: 'lines'
-                        },
-                        {
-                            match: {
-                                id: 'elixir'
-                            },
-                            id: 'lines'
-                        },
-                        {
-                            match: {
-                                id: 'javascript'
-                            },
-                            id: 'lines'
-                        }
-                    ]}
-
                 />
             </div>
         )

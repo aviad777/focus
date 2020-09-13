@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadUsers, login } from '../actions/UserActions.js';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     async componentDidMount() {

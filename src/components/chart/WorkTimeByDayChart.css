@@ -1,5 +1,5 @@
 .chart {
-    height: 50vh;
+    min-height: 500px;
     width: 60vw;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

@@ -1,5 +1,4 @@
 import React from 'react'
-// import projectService from './../services/projectService.js'
 
 import { saveUser } from '../actions/UserActions.js';
 import { makeId } from '../services/utils.js'
@@ -10,11 +9,6 @@ class AddProject extends React.Component {
     state = {
         project: ''
     }
-
-    // componentDidMount() {
-    //     const projects = projectService.query();
-    //     this.props.setProjects(projects);
-    // }
 
     handleChange = (ev) => {
         const { name, value } = ev.target;
@@ -32,8 +26,6 @@ class AddProject extends React.Component {
         this.props.saveUser(userToSave);
         this.setState({ project: '' });
     }
-
-
 
     render() {
         const { project } = this.state
@@ -53,8 +45,6 @@ class AddProject extends React.Component {
     }
 }
 
-
-
 const mapStateToProps = (state) => {
     return {
         loggedInUser: state.user.loggedInUser
@@ -64,7 +54,5 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     saveUser
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddProject)

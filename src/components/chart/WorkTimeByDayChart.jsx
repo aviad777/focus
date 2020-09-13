@@ -6,10 +6,7 @@ class WorkTimeByDayChart extends Component {
         data: []
     }
     async componentDidMount() {
-        // await this.setState({ fromDate: moment().format('YYYY-MM-DD'), toDate: moment().format('YYYY-MM-DD') })
-        // setTimeout(() => {
         this.setState({ data: this.props.chartDataBuilder(this.props.fromDate, this.props.toDate) });
-        // }, 1500);
     }
 
     componentDidUpdate(prevProps) {
@@ -19,7 +16,6 @@ class WorkTimeByDayChart extends Component {
         }
     }
     render() {
-        console.log(this.state.data)
         return (
             <div className="chart">
                 <ResponsiveLine
