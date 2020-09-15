@@ -124,6 +124,7 @@ class Stats extends Component {
             const dayToPush = { "weekday": day, [day]: week[day] }
             data.push(dayToPush)
         }
+        
         return data;
     }
 
@@ -143,8 +144,8 @@ class Stats extends Component {
 
             <p>Since {moment(this.state.fromDate).format('dddd')}, {moment(this.state.fromDate).format("MMM Do YYYY")} ({moment().diff(moment(this.state.fromDate), 'days')} days ago)
             to {moment(this.state.toDate).format('dddd')}, {moment(this.state.toDate).format("MMM Do YYYY")} ({moment().diff(moment(this.state.toDate), 'days')} days ago),
-            you have finished {sessionsCount} work sessions for a total of {hours ? hours + ' hours and ' + mins + ' minutes' : mins + ' minutes'}.
-            This means you have been working {avgHours ? avgHours + ' hours and ' + avgMins.toFixed(1) + ' minutes' : avgMins.toFixed(1) + ' minutes'} per day on average (including today).
+            you have finished {sessionsCount} work sessions for a total of {hours ? hours + ' hour(s) and ' + mins + ' minutes' : mins + ' minutes'}.
+            This means you have been working {avgHours ? avgHours + ' hour(s) and ' : ''} {Math.floor(avgMins) + ' minutes'} per day on average (including today).
             </p>
 
         </div>

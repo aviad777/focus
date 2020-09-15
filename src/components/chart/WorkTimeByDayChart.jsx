@@ -57,8 +57,6 @@ class WorkTimeByDayChart extends Component {
             </div>
         )
     }
-
-
 }
 export default WorkTimeByDayChart;
 

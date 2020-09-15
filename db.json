@@ -3,7 +3,7 @@
     {
       "id": 1,
       "userName": "Aviad",
-      "currProjectId": "lbfOTI",
+      "currProjectId": "jDbGDS",
       "projects": [
         {
           "name": "Do Shopping",
@@ -133,6 +133,18 @@
             "timeStart": 1599827454242,
             "duration": 45,
             "projectId": "lbfOTI"
+          }
+        ],
+        "2020-09-13": [
+          {
+            "timeStart": 1599997420328,
+            "duration": 45,
+            "projectId": "Jk8cAV"
+          },
+          {
+            "timeStart": 1600005326936,
+            "duration": 45,
+            "projectId": "jDbGDS"
           }
         ]
       }
