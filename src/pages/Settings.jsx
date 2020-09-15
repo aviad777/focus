@@ -6,22 +6,22 @@ import ProjectList from '../components/ProjectList';
 import AddProject from '../components/AddProject';
 
 class Settings extends Component {
-    async componentDidMount() {
 
-    }
 
     render() {
+        const { loggedInUser } = this.props;
         return (
             <div>
                 <h2>Settings</h2>
 
                 <AddProject />
-                {this.props.loggedInUser && this.props.loggedInUser.projects &&
-                    <ProjectList projects={this.props.loggedInUser.projects} />}
+                {loggedInUser && loggedInUser.projects &&
+                    <ProjectList projects={loggedInUser.projects} />}
             </div>
         )
     }
 }
+
 
 const mapStateToProps = state => {
     return {

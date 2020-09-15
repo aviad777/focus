@@ -146,6 +146,23 @@
             "duration": 45,
             "projectId": "jDbGDS"
           }
+        ],
+        "2020-09-15": [
+          {
+            "timeStart": 1600168634018,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600168855965,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600168855965,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          }
         ]
       }
     },

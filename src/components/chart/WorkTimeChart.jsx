@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
 import { ResponsiveLine } from '@nivo/line'
 
-class WorkTimeByDayChart extends Component {
+
+
+// gets dates and renders a chart for the user with the number of minutes worked on each project
+
+
+
+
+class WorkTimeChart extends Component {
     state = {
         data: []
     }
     async componentDidMount() {
-        this.setState({ data: this.props.chartDataBuilder(this.props.fromDate, this.props.toDate) });
+        const { chartDataBuilder, fromDate, toDate, sessions } = this.props;
+        this.setState({ data: chartDataBuilder(fromDate, toDate, sessions) });
     }
 
     componentDidUpdate(prevProps) {
-        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(this.props.fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(this.props.toDate)) {
+        const { chartDataBuilder, fromDate, toDate, sessions } = this.props;
+        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(toDate)) {
 
-            this.setState({ data: this.props.chartDataBuilder(this.props.fromDate, this.props.toDate) });
+            this.setState({ data: chartDataBuilder(fromDate, toDate, sessions) });
         }
     }
     render() {
@@ -58,7 +67,7 @@ class WorkTimeByDayChart extends Component {
         )
     }
 }
-export default WorkTimeByDayChart;
+export default WorkTimeChart;
 
 
 

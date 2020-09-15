@@ -7,19 +7,21 @@ import { ResponsivePie } from '@nivo/pie'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-class WorkTimeByProjectsPie extends Component {
+class WorkTimePie extends Component {
     state = {
         data: []
     }
 
     async componentDidMount() {
-        this.setState({ data: this.props.pieDataBuilder(this.props.fromDate, this.props.toDate) });
+        const { pieDataBuilder, fromDate, toDate, user } = this.props;
+        this.setState({ data: pieDataBuilder(fromDate, toDate, user) });
     }
 
     componentDidUpdate(prevProps) {
-        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(this.props.fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(this.props.toDate)) {
+        const { pieDataBuilder, fromDate, toDate, user } = this.props;
+        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(toDate)) {
 
-            this.setState({ data: this.props.pieDataBuilder(this.props.fromDate, this.props.toDate) });
+            this.setState({ data: pieDataBuilder(fromDate, toDate, user) });
         }
     }
 
@@ -75,4 +77,4 @@ class WorkTimeByProjectsPie extends Component {
         )
     }
 }
-export default WorkTimeByProjectsPie;
+export default WorkTimePie;

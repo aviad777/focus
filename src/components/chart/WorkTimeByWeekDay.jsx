@@ -11,16 +11,22 @@ class WorkTimeByWeekDay extends Component {
     state = {
         data: []
     }
+
     async componentDidMount() {
-        this.setState({ data: this.props.weekDayDataBuilder(this.props.fromDate, this.props.toDate) });
+        const { weekDayDataBuilder, fromDate, toDate, sessions } = this.props;
+
+        this.setState({ data: weekDayDataBuilder(fromDate, toDate, sessions) });
     }
+
 
     componentDidUpdate(prevProps) {
-        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(this.props.fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(this.props.toDate)) {
+        const { weekDayDataBuilder, fromDate, toDate, sessions } = this.props;
+        if (JSON.stringify(prevProps.fromDate) !== JSON.stringify(fromDate) || JSON.stringify(prevProps.toDate) !== JSON.stringify(toDate)) {
 
-            this.setState({ data: this.props.weekDayDataBuilder(this.props.fromDate, this.props.toDate) });
+            this.setState({ data: weekDayDataBuilder(fromDate, toDate, sessions) });
         }
     }
+
 
     render() {
         return <div className="chart">

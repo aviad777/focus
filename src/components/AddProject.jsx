@@ -28,7 +28,7 @@ class AddProject extends React.Component {
     }
 
     render() {
-        const { project } = this.state
+        const { project } = this.state;
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>

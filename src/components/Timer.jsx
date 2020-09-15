@@ -6,6 +6,10 @@ import Modal from './Modal'
 import { loadUsers, saveUser } from '../actions/UserActions.js';
 
 
+// count down for the user and once the count down is over, saves the session and show the correct modal
+
+
+
 class Timer extends Component {
     state = {
         minutes: 0,
@@ -13,8 +17,6 @@ class Timer extends Component {
         timeIsPaused: false,
         status: 'off',
         isModalOpen: false,
-        // projectName: null,
-        // projectId: null,
         sessionDurationMins: 45,
         sessionStartTime: Date.now(),
         currProjectId: null
@@ -77,10 +79,9 @@ class Timer extends Component {
     }
 
     onStartNewSession = () => {
-        this.sessionStart = Date.now();
-        this.sessionDuration = { minutes: 0, seconds: 10 }
 
-        this.setState(prevState => ({ ...prevState, status: 'work', minutes: this.sessionDuration.minutes, seconds: this.sessionDuration.seconds }))
+        const sessionDuration = { minutes: 0, seconds: 10 }
+        this.setState(prevState => ({ ...prevState, status: 'work', minutes: sessionDuration.minutes, seconds: sessionDuration.seconds }))
         this.runTimer()
     }
 
@@ -90,13 +91,15 @@ class Timer extends Component {
     }
 
     saveSession = () => {
+        const { sessionStartTime, sessionDurationMins } = this.state;
+        const { currProjectId } = this.props.loggedInUser;
         // NOTE count++ , projName , duration, timeStart
         const userToSave = JSON.parse(JSON.stringify(this.props.loggedInUser));
         const key = moment().format('YYYY-MM-DD');
         const sessionToSave = {
-            "timeStart": this.state.sessionStartTime,
-            "duration": this.state.sessionDurationMins,
-            "projectId": this.props.loggedInUser.currProjectId
+            "timeStart": sessionStartTime,
+            "duration": sessionDurationMins,
+            "projectId": currProjectId
         };
 
         if (key in userToSave.sessions) {
@@ -106,15 +109,16 @@ class Timer extends Component {
             userToSave.sessions[key] = []
             userToSave.sessions[key].push(sessionToSave)
         }
-
         // SET-USER
         this.props.saveUser(userToSave);
     }
+
 
     onStartBreak = () => {
         this.setState(prevState => ({ ...prevState, status: 'break', minutes: 0, seconds: 10 }))
         this.runTimer()
     }
+
 
     render() {
         const { minutes, seconds, isModalOpen, status } = this.state
@@ -142,6 +146,7 @@ class Timer extends Component {
         )
     }
 }
+
 
 const mapStateToProps = state => {
     return {

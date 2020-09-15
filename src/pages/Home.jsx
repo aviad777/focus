@@ -4,17 +4,22 @@ import { loadUsers, login, saveUser } from '../actions/UserActions.js';
 
 import Timer from '../components/Timer';
 
+
+
 class Home extends Component {
     state = {
         currProjectId: null
     }
 
     async componentDidMount() {
+
     }
+
     onChangeProject = (e) => {
+        const { loggedInUser } = this.props;
         const currProjectId = e.target.options[e.target.selectedIndex].value;
         this.setState({ currProjectId })
-        const userToSave = { ...this.props.loggedInUser, currProjectId}
+        const userToSave = { ...loggedInUser, currProjectId }
         this.props.saveUser(userToSave)
     }
     getCurrProjectId = () => {
@@ -22,7 +27,7 @@ class Home extends Component {
     }
 
     render() {
-        return ( this.props.loggedInUser &&
+        return (this.props.loggedInUser &&
             <div>
                 <h2>Home</h2>
                 <select onChange={(e) => this.onChangeProject(e)}>
@@ -32,7 +37,7 @@ class Home extends Component {
                             <option key={project.id} value={project.id}>{project.name}</option>)
                     }
                 </select>
-            {this.state.currProjectId  && <Timer />}
+                {this.state.currProjectId && <Timer />}
             </div>
         )
     }
