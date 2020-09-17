@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadUsers, login } from '../actions/UserActions.js';
-import WorkTimeChart from '../components/chart/WorkTimeChart.jsx'
-import WorkTimePie from '../components/chart/WorkTimePie.jsx'
-import WorkTimeByWeekDay from '../components/chart/WorkTimeByWeekDay.jsx'
+import WorkTimeChart from '../components/chart/WorkTimeChart.jsx';
+import WorkTimePie from '../components/chart/WorkTimePie.jsx';
+import WorkTimeByWeekDay from '../components/chart/WorkTimeByWeekDay.jsx';
 import moment from 'moment';
 import StatsService from '../services/StatsService.js';
 

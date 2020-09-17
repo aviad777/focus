@@ -4,11 +4,10 @@ import moment from 'moment'
 
 import Modal from './Modal'
 import { loadUsers, saveUser } from '../actions/UserActions.js';
+import StatsService from '../services/StatsService.js';
 
 
 // count down for the user and once the count down is over, saves the session and show the correct modal
-
-
 
 class Timer extends Component {
     state = {
@@ -110,7 +109,8 @@ class Timer extends Component {
             userToSave.sessions[key].push(sessionToSave)
         }
         // SET-USER
-        this.props.saveUser(userToSave);
+        const rankedUserToSave = StatsService.updateRank(userToSave);
+        this.props.saveUser(rankedUserToSave);
     }
 
 

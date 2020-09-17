@@ -2,11 +2,12 @@
   "users": [
     {
       "id": 1,
+      "rank": 5,
       "userName": "Aviad",
       "currProjectId": "jDbGDS",
       "projects": [
         {
-          "name": "Do Shopping",
+          "name": "Do shopping",
           "id": "Jk8cAV",
           "timeCreated": 1599749256167
         },
@@ -163,11 +164,106 @@
             "duration": 45,
             "projectId": "jDbGDS"
           }
+        ],
+        "2020-09-16": [
+          {
+            "timeStart": 1600242765644,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          },
+          {
+            "timeStart": 1600242765644,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          }
+        ],
+        "2020-09-17": [
+          {
+            "timeStart": 1600335174568,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600335231914,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          },
+          {
+            "timeStart": 1600336038498,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600336120204,
+            "duration": 45,
+            "projectId": "tXHJNk"
+          },
+          {
+            "timeStart": 1600336552239,
+            "duration": 45,
+            "projectId": "lbfOTI"
+          },
+          {
+            "timeStart": 1600338371246,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          },
+          {
+            "timeStart": 1600340587141,
+            "duration": 45,
+            "projectId": "jDbGDS"
+          }
         ]
       }
     },
     {
       "id": 2,
+      "rank": 0,
       "userName": "Michael",
       "password": "",
       "projects": [],

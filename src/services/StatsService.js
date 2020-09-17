@@ -9,9 +9,54 @@ export default {
     averageCalc,
     chartDataBuilder,
     pieDataBuilder,
-    weekDayDataBuilder
+    weekDayDataBuilder,
+    updateRank
 }
 
+function updateRank(user) {
+    const sessionCount = calculateSessions(Date.now()-1000*60*60*24*6, Date.now(), user.sessions).sessionsCount
+    
+    switch (true) {
+        case (sessionCount>=44):
+            user.rank = 10 
+            break;
+        case (sessionCount>=40 && sessionCount<44):
+            user.rank = 9 
+            break;
+        case (sessionCount>=36 && sessionCount<40):
+            user.rank = 8 
+            break;
+        case (sessionCount>=32 && sessionCount<36):
+            user.rank = 7
+            break;
+        case (sessionCount>=28 && sessionCount<32):
+            user.rank = 6
+            break;
+        case (sessionCount>=24 && sessionCount<28):
+            user.rank = 5
+            break;
+        case (sessionCount>=20 && sessionCount<24):
+            user.rank = 4
+            break;
+        case (sessionCount>=16 && sessionCount<20):
+            user.rank = 3
+            break;
+        case (sessionCount>=12 && sessionCount<16):
+            user.rank = 2
+            break;
+        case (sessionCount>=8 && sessionCount<12):
+            user.rank = 1
+            break;
+        default:
+            user.rank = 0
+            break;
+    }
+    console.log(sessionCount);
+    console.log(user)
+
+    return user
+    
+}
 
 function getProjNameById(id, projects) {
     return projects.find(proj => id === proj.id).name;
