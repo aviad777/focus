@@ -12,7 +12,6 @@ import Beaver from '../assets/img/avatars/Beaver.png'
 import Bee from '../assets/img/avatars/Bee.png'
 import Ant from '../assets/img/avatars/Ant.png'
 
-
 export default function Rank({ user }) {
 
     const ranks = [
